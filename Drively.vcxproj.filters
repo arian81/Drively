@@ -24,12 +24,24 @@
     <ClCompile Include="BaseRide.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomExceptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingleRide.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BaseRide.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomExceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

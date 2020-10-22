@@ -1,11 +1,14 @@
 #pragma once
 #include "BaseRide.h"
+#include <iostream>
 class SingleRide : public BaseRide
 {
-	friend void CalculateCost(SingleRide& ride);
 public:
-	SingleRide(string carName, string driverName, string licensePlate, string location, int seatsAvailable);
+	SingleRide(string rideType, string carName, string driverName, string licensePlate, string location, int seatsAvailable);
 	void reserveSeat(string passengerName);
+	void calculateCost();
+	void getCostInfo();
+	int random = 123;
 
 };
 
