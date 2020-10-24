@@ -29,7 +29,7 @@ string IsAlpha() {
         try
         {
             getline(cin, input);
-            if (input.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") != std::string::npos)
+            if (input.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") != std::string::npos)
             {
 
                 throw InvalidInput("bad input");
@@ -53,7 +53,7 @@ string IsAlphaNum() {
         try
         {
             getline(cin, input);
-            if (input.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_") != std::string::npos)
+            if (input.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_ ") != std::string::npos)
             {
 
                 throw InvalidInput("bad input");
@@ -90,4 +90,26 @@ string IsValidRideType() {
         }
     }
 
+};
+
+int IsCarSeat() {
+    string input;
+    while (true)
+    {
+        try
+        {
+            getline(cin, input);
+            if (input.find_first_not_of("0123456") != std::string::npos || input.length()>1)
+            {
+
+                throw InvalidInput("bad input");
+
+            }
+            return stoi(input);
+        }
+        catch (InvalidInput& exp)
+        {
+            cout << "A car can't have less than zero or more than 6 passenger seats. Please check your input." << endl;
+        }
+    }
 };

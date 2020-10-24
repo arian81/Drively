@@ -6,6 +6,8 @@
 
 using namespace std;
 
+float round(float var, int precision);
+
 struct Time {
 	
 	int min;
@@ -19,13 +21,16 @@ struct Cost
 class BaseRide
 {
 protected:
-	BaseRide(string rideType,string carName, string driverName, string licensePlate, string location, int seatsAvailable);
+	
 	string carName , driverName , licensePlate , location;
 	int seatsAvailable;
 	Time estimatedTime;
-	string passengers[4];
+	string** passengers = new string* [seatsAvailable];
 	Cost cost;
+	
 public:
+	BaseRide(string rideType, string carName, string driverName, string licensePlate, string location, int seatsAvailable);
+	~BaseRide();
 	string rideType;
 	virtual void reserveSeat(string passengerName);
 	virtual void calculateCost();
@@ -33,4 +38,5 @@ public:
 	void getFullInfo();
 	virtual void getCostInfo();
 	static int counter;
+	int passengersInCar = 0;
 };

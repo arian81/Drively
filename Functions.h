@@ -13,3 +13,4 @@ string IsAlphaNum();
 
 string IsValidRideType();
 
+int IsCarSeat();

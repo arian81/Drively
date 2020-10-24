@@ -8,7 +8,6 @@ public:
 	void reserveSeat(string passengerName);
 	void calculateCost();
 	void getCostInfo();
-	int random = 123;
 
 };
 

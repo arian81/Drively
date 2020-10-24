@@ -7,6 +7,7 @@
 #include <exception>
 #include <algorithm>
 #include "Functions.h"
+#include "SharedRide.h"
 using namespace std;
 
 
@@ -22,17 +23,20 @@ int main()
         cout << "How many drivers are available right now ? >\t";
         availableDrivers = IsNum();
         BaseRide** availableRides = new BaseRide * [availableDrivers];
-        availableRides[0] = new SingleRide("sahred","toyouta", "blob", "asdjf", "lakdflj", 1);
-        availableRides[1] = new SingleRide("single", "toyouta", "blob", "asdjf", "lakdflj", 1);
+        availableRides[0] = new SharedRide("sahred","toyouta", "blob", "asdjf", "lakdflj", 7);
+        availableRides[1] = new SingleRide("single","toyota","mamad","adfjkl","afdjlka",1);
         //SingleRide* holder = dynamic_cast<SingleRide*>(availableRides[0]);
         //CalculateCost(*holder);
         //availableRides[0]->getCostInfo();
         //holder->calculateCost();
        // holder->getCostInfo();
         //cout << holder->counter;
-        for (int i = 0; i < availableDrivers; i++)
+
+
+
+        /*for (int i = 0; i < availableDrivers; i++)
         {
-            cout << "Please enter the details for driver #" << i << endl << endl;
+            cout << "Please enter the details for driver #" << i+1 << endl << endl;
             cout << "Does this driver accept single rides or shared rides? (single/shared)  >\t";
             rideType = IsValidRideType();
             cout << "\n\nWhat car does this driver own?  >\t";
@@ -45,14 +49,26 @@ int main()
             driverLocation = IsAlphaNum();
             if (rideType == "shared") {
                 cout << "How many seats are available ?  >\t";
-                seatsAvailable = IsNum();
+                seatsAvailable = IsCarSeat();
             }
             else {
                 seatsAvailable = 1;
             }
             availableRides[i] = new SingleRide(rideType,driverCar,driverName,driverLicensePlate,driverLocation,seatsAvailable);
 
-        }
+        }*/
+
+        availableRides[0]->reserveSeat("arian");
+        availableRides[0]->reserveSeat("mamad");
+        availableRides[0]->reserveSeat("asal");
+        availableRides[0]->reserveSeat("iris");
+        availableRides[0]->reserveSeat("aysan");
+        availableRides[0]->reserveSeat("mohamad");
+        availableRides[0]->reserveSeat("mehrzad");
+        
+        availableRides[1]->reserveSeat("nobody");
+        availableRides[0]->getRideInfo();
+        availableRides[1]->getRideInfo();
 
 //========================================================== MANAGING PHASE =================================================================================================
     /*do

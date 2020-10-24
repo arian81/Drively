@@ -143,12 +143,14 @@
     <ClCompile Include="CustomExceptions.cpp" />
     <ClCompile Include="Drively.cpp" />
     <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="SharedRide.cpp" />
     <ClCompile Include="SingleRide.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseRide.h" />
     <ClInclude Include="CustomExceptions.h" />
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="SharedRide.h" />
     <ClInclude Include="SingleRide.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

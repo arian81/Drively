@@ -23,10 +23,15 @@ void BaseRide::getRideInfo() {
 	cout << "You chose to have a " << rideType << "ride." << endl;
 	cout << "Your amount payable is : $" << cost.total << endl;
 	cout << "Car Model : " << carName << endl << "License Plate Number : " << licensePlate << endl;
+	cout << "Passengers on this ride : " << endl;
+	for (int i = passengersInCar; i > 0; i--)
+	{
+		cout << *passengers[i] << endl;
+	}
 	cout << "If there's any mismatch between this data and actual driver please cancel the ride and report the driver." << endl;
 };
 void BaseRide::getFullInfo() {
-	cout << "Car Model : " << carName << endl << "Driver Name : " << driverName << endl << "License Plate Number : " << licensePlate << endl << "Location : " << location << endl << "Number of seats available : " << seatsAvailable << endl;
+	cout <<"Ride type : " << rideType << "Car Model : " << carName << endl << "Driver Name : " << driverName << endl << "License Plate Number : " << licensePlate << endl << "Location : " << location << endl << "Number of seats available : " << seatsAvailable << endl;
 };
 void BaseRide::getCostInfo() {
 	cout << "Here is your detailed cost break down :\n" << endl << "Base trip rate (Same for any ride) :  \t$" << cost.baseComission << "\n \t\t\t\t      +" << endl;
