@@ -5,23 +5,12 @@ using namespace std;
 
 //float round(float var, int precision);
 
-SingleRide::SingleRide(string rideType, string carName, string driverName, string licensePlate, string location, int seatsAvailable) : BaseRide(rideType,carName, driverName, licensePlate, location, seatsAvailable) {};
+SingleRide::SingleRide(string rideType, string carName, string driverName, string licensePlate, string destination, int seatsAvailable) : BaseRide(rideType,carName, driverName, licensePlate, destination, seatsAvailable) {};
 
 void SingleRide::reserveSeat(string passenger) {
 	this->passengers[seatsAvailable] = new string(passenger);
 	this->seatsAvailable = 0;
 	this -> passengersInCar++;
-};
-
-void SingleRide::calculateCost() {
-	float temp = 1;
-	temp *= (estimatedTime.min + (float(estimatedTime.sec) / 60));
-	temp = round(temp, 2);
-	cost.rideCost = temp;
-	cost.drivelyCut = round(temp * 0.1, 2);
-	cost.tax = round((cost.rideCost + cost.drivelyCut + cost.baseComission) * 0.13, 2);
-	cost.total = (cost.rideCost + cost.drivelyCut + cost.baseComission + cost.tax);
-	cost.total += 15;
 };
 
 void SingleRide::getCostInfo() {
