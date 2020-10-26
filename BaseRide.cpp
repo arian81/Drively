@@ -7,8 +7,8 @@ double round(double value, int digits)
 	if (value == 0.0) // otherwise it will return 'nan' due to the log10() of zero
 		return 0.0;
 
-	double factor = pow(10.0, digits - ceil(log10(fabs(value))));
-	return round(value * factor) / factor;
+	double factor = std::pow(10.0, digits - std::ceil(std::log10(std::fabs(value))));
+	return std::round(value * factor) / factor;
 }
 
 BaseRide::BaseRide(string rideType,string carName, string driverName, string licensePlate, string destination, int seatsAvailable) :rideType(rideType), carName(carName), driverName(driverName), licensePlate(licensePlate), destination(destination), seatsAvailable(seatsAvailable) {
@@ -20,9 +20,11 @@ BaseRide::BaseRide(string rideType,string carName, string driverName, string lic
 };
 
 BaseRide::~BaseRide() {
-	for (int i = 0; i < seatsAvailable; i++)
-	{
-		delete[] passengers[i];
+	if (passengersInCar > 0) {
+		for (int i = carCapacity; i > seatsAvailable; i--)
+		{
+			delete passengers[i];
+		}
 	}
 	delete[] passengers;
 	counter--;
@@ -41,7 +43,7 @@ void BaseRide::getRideInfo() {
 };
 
 void BaseRide::getCarInfo() {
-	cout <<"Ride type : " << rideType << "Car Model : " << carName << endl << "Driver Name : " << driverName << endl << "License Plate Number : " << licensePlate << endl << "Destination : " << destination << endl << "Number of seats available : " << seatsAvailable << endl;
+	cout <<"Ride type : " << rideType << endl<< "Car Model : " << carName << endl << "Driver Name : " << driverName << endl << "License Plate Number : " << licensePlate << endl << "Destination : " << destination << endl << "Number of seats available : " << seatsAvailable << endl;
 };
 
 void BaseRide::getCostInfo() {
@@ -53,8 +55,8 @@ void BaseRide::getCostInfo() {
 };
 
 void BaseRide::calculateCost() {
-	float temp = 1;
-	temp *= (estimatedTime.min + (float(estimatedTime.sec) / 60));
+	double temp = 1;
+	temp *= (estimatedTime.min + (double(estimatedTime.sec) / 60));
 	temp = round(temp, 2);
 	cost.rideCost = temp;
 	cost.drivelyCut = round(temp * 0.1, 2);

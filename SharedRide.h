@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseRide.h"
+
 class SharedRide : public BaseRide
 {
 public:

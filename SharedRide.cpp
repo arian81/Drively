@@ -10,13 +10,13 @@ void SharedRide::reserveSeat(string passenger) {
 };
 
 void SharedRide::calculateCost() {
-	float temp = 1;
-	temp *= (estimatedTime.min + (float(estimatedTime.sec) / 60));
+	double temp = 1;
+	temp *= (estimatedTime.min + (double(estimatedTime.sec) / 60));
 	temp = round(temp, 2);
 	cost.rideCost = temp;
 	cost.drivelyCut = round(temp * 0.1, 2);
 	cost.total = (cost.rideCost + cost.drivelyCut + cost.baseComission);
-	cost.total += 5 * passengersInCar;
+	cost.total += 5.0 * passengersInCar;
 	cost.tax = round(cost.total * 0.13, 2);
 	cost.total += cost.tax;
 };
@@ -39,7 +39,7 @@ void SharedRide::getCostInfo() {
 };
 
 void SharedRide::getRideInfo() {
-	cout << driverName << " will pick you up and estimated ride time is " << estimatedTime.min << " minutes and " << estimatedTime.sec << " seconds." << endl;
+	cout << driverName << " will pick you up. Your estimated ride time is " << estimatedTime.min << " minutes and " << estimatedTime.sec << " seconds." << endl;
 	cout << "You chose to have a " << rideType << "ride." << endl;
 	cout << "Car Model : " << carName << endl << "License Plate Number : " << licensePlate << endl;
 	cout << "Passengers on this ride : " << endl;

@@ -19,165 +19,185 @@ int main()
         //========================================================== SETUP PHASE ====================================================================================================
         int availableDrivers = 0, seatsAvailable=0;
         string rideType, driverCar, driverName, driverLicensePlate, driverDestination;
-        cout << "\t\t\t\t\tInitializing Drively";
-        /*for (int i = 0; i < 10; i++)
+        bool isLicensePlate = false;
+        std::cout << "\t\t\t\t\tInitializing Drively Setup Procedure";
+        for (int i = 0; i < 10; i++)
         {
-            cout << ".";
+            std::cout << ".";
             this_thread::sleep_for(chrono::milliseconds(300));
-        }*/
-        cout << "\nHow many drivers are available right now ? >\t";
+        }
+        std::cout << endl << endl;
+        PrintLogo();
+
+        std::cout << "\nHow many drivers are available right now ?";
         availableDrivers = IsNum();
         BaseRide** availableRides = new BaseRide * [availableDrivers];
-        availableRides[0] = new SharedRide("sahred","toyouta", "blob", "asdjf", "toronto", 7);
-        availableRides[1] = new SingleRide("single","toyota","mamad","adfjkl","missisauga",1);
-        availableRides[2] = new SingleRide("single", "toyota", "mamadagdsgd", "adfjkl", "toronto", 1);
-        //SingleRide* holder = dynamic_cast<SingleRide*>(availableRides[0]);
-        //CalculateCost(*holder);
-        //availableRides[0]->getCostInfo();
-        //holder->calculateCost();
-       // holder->getCostInfo();
-        //cout << holder->counter;
-
-
-
-        /*for (int i = 0; i < availableDrivers; i++)
+        /*availableRides[0] = new SharedRide(rideType, driverCar, driverName, driverLicensePlate, driverDestination, seatsAvailable);
+        delete availableRides[0];*/
+        for (int i = 0; i < availableDrivers; i++)
         {
-            cout << "Please enter the details for driver #" << i+1 << endl << endl;
-            cout << "Does this driver accept single rides or shared rides? (single/shared)  >\t";
+            std::cout << "Please enter the details for driver #" << i+1 << endl << endl;
+            std::cout << "Does this driver accept single rides or shared rides? (single/shared)";
             rideType = IsValidRideType();
-            cout << "\n\nWhat car does this driver own?  >\t";
+            std::cout << "\n\nWhat car does this driver own?  ";
             getline(cin, driverCar);
-            cout << "\n\nWhat's the name of the driver?  >\t";
+            std::cout << "\n\nWhat's the name of the driver?  ";
             driverName = IsAlpha();
-            cout << "\n\nPlease enter the license plate number for " << driverCar << "  >\t";
-            driverLicensePlate = IsAlphaNum();
-            cout << "\n\nWhere is " << driverName << " destination ?  >\t";
+            std::cout << "\n\nPlease enter the license plate number for " << driverCar << "?  ";
+            if (i==0)
+            {
+                driverLicensePlate = IsAlphaNum();
+            }
+            else
+            {
+                do
+                {
+                    driverLicensePlate = IsAlphaNum();
+
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (driverLicensePlate == availableRides[j]->licensePlate)
+                        {
+                            std::cout << "License plate already exists in database.\n" << endl;
+
+                            isLicensePlate = false;
+                            break;
+                        }
+                        else {
+                            isLicensePlate = true;
+                        }
+                    }
+                } while (isLicensePlate == false);
+            }
+            std::cout << "\n\nWhere is " << driverName << " destination ?  ";
             driverDestination = IsAlphaNum();
             if (rideType == "shared") {
-                cout << "How many seats are available ?  >\t";
+                std::cout << "How many seats are available ?";
                 seatsAvailable = IsCarSeat();
+                availableRides[i] = new SharedRide(rideType, driverCar, driverName, driverLicensePlate, driverDestination, seatsAvailable);
             }
             else {
                 seatsAvailable = 1;
+                availableRides[i] = new SingleRide(rideType, driverCar, driverName, driverLicensePlate, driverDestination, seatsAvailable);
             }
-            availableRides[i] = new SingleRide(rideType,driverCar,driverName,driverLicensePlate,driverDestination,seatsAvailable);
+            
 
         }
-        system("pause");
+        std::system("pause");
                 Clear();
-        */
-
-        availableRides[0]->reserveSeat("arian");
-        availableRides[0]->reserveSeat("aysan");
-        availableRides[0]->reserveSeat("iris");
-        //availableRides[0]->calculateCost();
-        /*availableRides[0]->getRideInfo();
-        availableRides[0]->getCostInfo();*/
-        availableRides[0]->getPassengersList();
-        availableRides[0]->cancelSeat("aysan");
-        availableRides[0]->getPassengersList();
+        
 
 //========================================================== MANAGING PHASE =================================================================================================
-        string strChoices , costChoice;
-        int intChoices;
-        string passengerName , passengerDestination;
-        int ridesCount = availableRides[0]->counter;
+        string strChoices, passengerName, passengerDestination;
+        int ridesCount = availableRides[0]->counter , intChoices;
         bool noRideAvailable = true;
+
+        std::cout << "\t\t\t\t\tInitializing Drively Managing Procedure";
+        for (int i = 0; i < 10; i++)
+        {
+            std::cout << ".";
+            this_thread::sleep_for(chrono::milliseconds(300));
+        }
+        std::cout << endl;
         while (true)
         {
-            cout << "What can I do for you ?\n" << endl;
-            cout << "1.Reserve a seat \t 2.Cancel a seat \t 3.Exit\n \t>";
+            std::cout << "What can I do for you ?\n" << endl;
+            std::cout << "1.Reserve a seat \t 2.Cancel a seat \t 3.Exit\n\n ";
             strChoices = IsAlphaNum();
 
             if (strChoices == "1" || strChoices.find("reserve") != string::npos)
             {
-                cout << "\nPlease enter your first and last name \n >\t";
+                std::cout << "\nPlease enter your first and last name \n\n ";
                 passengerName = IsAlpha();
                 if (passengerName == "exit")
                 {
                     continue;
                 }
-                cout << "\nPlease enter your destination \n >\t";
+                std::cout << "\nPlease enter your destination \n\n ";
                 passengerDestination = IsAlphaNum();
-                cout << "Here's a list of available rides. Please choose one of them\n" << endl;
+                std::cout << "Here's a list of available rides. Please choose one of them\n" << endl;
                 for (int i = 0; i < ridesCount; i++)
                 {
                     if (availableRides[i]->seatsAvailable > 0 && availableRides[i]->destination == passengerDestination) {
-                        cout << "Ride # : " << i+1 << endl <<endl;
+                        std::cout << "Ride # : " << i+1 << endl <<endl;
                         availableRides[i]->getCarInfo();
                         noRideAvailable = false;
-                        cout << "==================================================================================================================" << endl;
+                        std::cout << "==================================================================================================================" << endl;
                     }
                 }
                 if (noRideAvailable == true)
                 {
-                    cout << "There's no ride available to your destination at this moment. Please try again later.\n" << endl;
-                    system("pause");
+                    std::cout << "There's no ride available to your destination at this moment. Please try again later.\n" << endl;
+                    std::system("pause");
                     Clear();
                 }
                 else
                 {
-                    cout << ">\t";
                     intChoices = IsNum();
                     availableRides[intChoices - 1]->reserveSeat(passengerName);
-                    cout << "Your ride has been successfully reserved. Your driver is on their way to your location.\n" << endl;
-                    cout << "Here is your ride details : \n" << endl;
+                    std::cout << "Your ride has been successfully reserved. Your driver is on their way to your location.\n" << endl;
+                    std::cout << "Here is your ride details : \n" << endl;
                     availableRides[intChoices - 1]->calculateCost();
                     availableRides[intChoices - 1]->getRideInfo();
-                    cout << "Do you wish to see a break down of your ride cost ?(yes/no)\n >";
-                    costChoice = IsAlpha();
-                    if (costChoice == "yes")
+                    std::cout << "Do you wish to see a break down of your ride cost ?(yes/no)\n\n ";
+                    strChoices = IsAlpha();
+                    if (strChoices == "yes")
                     {
                         availableRides[intChoices - 1]->getCostInfo();
                     }
-                    system("pause");
+                    noRideAvailable = true;
+                    std::system("pause");
                     Clear();
                 }
             }
+
             else if (strChoices == "2" || strChoices.find("cancel") != string::npos)
             {
-                cout << "which ride is the passenger in ?" << endl;
+                std::cout << "which ride is the passenger in ?" << endl;
                 for (int i = 0; i < ridesCount; i++)
                 {
                     if (availableRides[i]->passengersInCar > 0)
                     {
-                        cout << "Ride # : " << i + 1 << endl << endl;
+                        std::cout << "Ride # : " << i + 1 << endl << endl;
                         availableRides[i]->getCarInfo();
-                        cout << "==================================================================================================================" << endl;
+                        noRideAvailable = false;
+                        std::cout << "==================================================================================================================" << endl;
                     }
                     
                 }
-                cout << ">\t";
-                intChoices = IsNum();
-                cout << "Which passenger do you want to cancel seats for ?\n" << endl;
-                availableRides[intChoices-1]->getPassengersList();
-                cout << ">\t";
-                passengerName = IsAlpha();
-                if (passengerName == "exit")
-                {
-                    continue;
+                if (noRideAvailable == true) {
+                    std::cout << "All rides are empty. No passengers available to cancel.\n" << endl;
+                    std::system("pause");
+                    Clear();
                 }
-                availableRides[intChoices-1]->cancelSeat(passengerName);
-                system("pause");
-                Clear();
+                else
+                {
+                    intChoices = IsNum();
+                    std::cout << "Which passenger do you want to cancel seats for ?\n" << endl;
+                    availableRides[intChoices - 1]->getPassengersList();
+                    std::cout << ">\t";
+                    passengerName = IsAlpha();
+                    if (passengerName == "exit")
+                    {
+                        continue;
+                    }
+                    availableRides[intChoices - 1]->cancelSeat(passengerName);
+                    noRideAvailable = true;
+                    std::system("pause");
+                    Clear();
+                }
             }
             else if (strChoices == "3" || strChoices.find("exit") != string::npos)
             {
+                for (int i = 0; i < availableDrivers; i++)
+                {
+                    delete availableRides[i];
+                }
+                delete[] availableRides;
                 return 0;
             }
             else {
-                cout << "\nNot a valid option. Please try again.\n" << endl;
+                std::cout << "\nNot a valid option. Please try again.\n" << endl;
             }
         }
-}
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+};

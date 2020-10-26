@@ -15,4 +15,8 @@ string IsValidRideType();
 
 int IsCarSeat();
 
+string IsValidLicense(string license);
+
 void Clear();
+
+void PrintLogo();
