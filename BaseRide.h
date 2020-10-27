@@ -3,7 +3,6 @@
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
-#include <math.h>
 
 using namespace std;
 
@@ -11,8 +10,8 @@ double round(double value, int digits);
 
 struct Time {
 	
-	int min;
-	int sec;
+	int min = 0;
+	int sec = 0;
 };
 
 struct Cost

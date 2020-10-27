@@ -1,5 +1,8 @@
-// Drively.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/*
+    Developed by Arian Ahmadinejad
+    Drively : Grade 12 Computer Science Project
+    2020-10-17
+*/
 
 #include <iostream>
 #include <exception>
@@ -10,6 +13,7 @@
 #include "SingleRide.h"
 #include "Functions.h"
 #include "SharedRide.h"
+
 using namespace std;
 
 
@@ -32,8 +36,6 @@ int main()
         std::cout << "\nHow many drivers are available right now ?";
         availableDrivers = IsNum();
         BaseRide** availableRides = new BaseRide * [availableDrivers];
-        /*availableRides[0] = new SharedRide(rideType, driverCar, driverName, driverLicensePlate, driverDestination, seatsAvailable);
-        delete availableRides[0];*/
         for (int i = 0; i < availableDrivers; i++)
         {
             std::cout << "Please enter the details for driver #" << i+1 << endl << endl;

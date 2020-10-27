@@ -25,7 +25,6 @@ void SharedRide::getCostInfo() {
 	cout << "Total ride cost for ";
 	for (int i = carCapacity; i > seatsAvailable; i--)
 	{
-
 		cout << " " << *passengers[i];
 		if (i > 1) {
 			cout << ",";
@@ -35,7 +34,7 @@ void SharedRide::getCostInfo() {
 	cout << "Ride cost based on estimated time : \t$" << cost.rideCost << "\n \t\t\t\t      +" << endl << "Driverly's cut (10%): \t\t\t$" << cost.drivelyCut << endl;
 	cout << "\t\t\t\t      +" << endl << "HST tax (13%) : \t\t\t$" << cost.tax << endl << "\t\t\t\t      +" << endl << "$5 per person ride commission : \t$" << 5 * passengersInCar << "\n\n==================================================\n" << endl;
 	cout << "Total trip cost : \t\t\t$" << cost.total << endl << endl;
-	cout << "Amount payable by each passenger : \t$" << round(cost.total / passengersInCar, 4) << endl;
+	cout << "Amount payable by each passenger : \t$" << round(cost.total / passengersInCar, 3) << endl;
 };
 
 void SharedRide::getRideInfo() {
@@ -47,6 +46,6 @@ void SharedRide::getRideInfo() {
 	{
 		cout << *passengers[i] << endl;
 	}
-	cout << "Amount payable by each passenger is : " << round(cost.total / passengersInCar, 4) << endl;
+	cout << "Amount payable by each passenger is : " << round(cost.total / passengersInCar, 3) << endl;
 	cout << "If there's any mismatch between this data and actual driver please cancel the ride and report the driver." << endl;
 };

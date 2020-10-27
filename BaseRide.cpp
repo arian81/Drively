@@ -16,7 +16,6 @@ BaseRide::BaseRide(string rideType,string carName, string driverName, string lic
 	estimatedTime.min = (rand() % 20) + 1;
 	estimatedTime.sec = (rand() % 59) + 1;
 	counter++;
-	
 };
 
 BaseRide::~BaseRide() {
