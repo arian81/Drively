@@ -15,3 +15,9 @@ class OutOfRangeSeat : public out_of_range
 public:
 	explicit OutOfRangeSeat(const string msg);
 };
+
+class OutOfRangeRide : public out_of_range
+{
+public:
+	explicit OutOfRangeRide(const string msg);
+};
