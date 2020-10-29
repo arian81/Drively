@@ -1,3 +1,8 @@
+/*
+    Developed by Arian Ahmadinejad
+    Drively : Grade 12 Computer Science Project
+    2020-10-17
+*/
 #include "Functions.h"
 
 int IsNum() {
@@ -8,13 +13,13 @@ int IsNum() {
         {
             cout << ">\t";
             getline(cin, input);
-            if (input.find_first_not_of("0123456789") != std::string::npos || input.length() == 0)
+            if (input.find_first_not_of("0123456789") != std::string::npos || input.length() == 0) // in the first occurrence of letters it throws a InvalidInput exception which is a custom exception derived from invalid input exception
             {
 
                 throw InvalidInput("letters in number-only input");
 
             }
-            return stoi(input);
+            return stoi(input); // convert string to int
         }
         catch (InvalidInput& exp)
         {
@@ -32,7 +37,7 @@ string IsAlpha() {
         {
             cout << ">\t";
             getline(cin, input);
-            if (input.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") != std::string::npos || input.length() == 0)
+            if (input.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") != std::string::npos || input.length() == 0) // in the first occurrence of numbers it throws a InvalidInput exception which is a custom exception derived from invalid input exception
             {
 
                 throw InvalidInput("numbers in letter-only input");
@@ -58,7 +63,7 @@ string IsAlphaNum() {
         {
             cout << ">\t";
             getline(cin, input);
-            if (input.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_ ") != std::string::npos || input.length() == 0)
+            if (input.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_ ") != std::string::npos || input.length() == 0) // in the first occurrence of special characters it throws a InvalidInput exception which is a custom exception derived from invalid input exception
             {
 
                 throw InvalidInput("Special characters found");
@@ -83,7 +88,7 @@ string IsValidRideType() {
         {
             cout << ">\t";
             getline(cin, input);
-            if (input != "single" && input != "shared" || input.length() == 0)
+            if (input != "single" && input != "shared" || input.length() == 0) // checks if the input is only single or shared and throws exception in any other case
             {
 
                 throw InvalidInput("irrelevant input");
@@ -108,7 +113,7 @@ int IsCarSeat() {
         {
             cout << ">\t";
             getline(cin, input);
-            if (input.find_first_not_of("0123456") != std::string::npos || input.length()>1 || input.length() == 0)
+            if (input.find_first_not_of("0123456") != std::string::npos || input.length()>1 || input.length() == 0) // checks the number of available seats to be less than 6 and more than 0
             {
 
                 throw OutOfRangeSeat("seat not in range");
@@ -124,7 +129,7 @@ int IsCarSeat() {
     }
 };
 
-
+// a function to detect the operating system of the user and user the correct command to clear the console screen
 void Clear()
 {
 #if defined _WIN32
@@ -136,6 +141,7 @@ void Clear()
 #endif
 };
 
+// a function that prints Drively's logo
 void PrintLogo()
 {
     cout << "\t\t				  " << "*#############" << endl << "\t\t    			     " << "(###/               *###." << endl;

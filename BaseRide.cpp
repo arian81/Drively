@@ -1,3 +1,8 @@
+/*
+	Developed by Arian Ahmadinejad
+	Drively : Grade 12 Computer Science Project
+	2020-10-17
+*/
 #include "BaseRide.h"
 
 using namespace std;
@@ -33,8 +38,9 @@ BaseRide::~BaseRide() {
 	counter--;
 };
 
-// This is mostly a dummy method because each inherited class has their own way of reserving seats. In this instance it only decreases the seatsAvailable by 1 and adds 1 to passengers in car variable
+// A method that starts from the end of array and places given input which is passenger names. This method is shared across all classes and doesn't change based on object.
 void BaseRide::reserveSeat(string passengerName) {
+	this->passengers[seatsAvailable] = new string(passengerName);
 	this->seatsAvailable--;
 	this->passengersInCar++;
 };
@@ -69,7 +75,7 @@ void BaseRide::calculateCost() {
 	temp = round(temp, 2);
 	cost.rideCost = temp;
 	cost.drivelyCut = round(temp * 0.1, 2);
-	cost.total = (cost.rideCost + cost.drivelyCut + cost.baseComission + 15);
+	cost.total = (cost.rideCost + cost.drivelyCut + cost.baseComission);
 	cost.tax = round(cost.total * 0.13, 2);
 	cost.total += cost.tax;
 };

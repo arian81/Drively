@@ -7,9 +7,9 @@
 #include <iostream>
 #include <exception>
 #include <algorithm>
-#include <thread>// used with the following library to print a message after specified time
+#include <thread>// Used with the chrono library to print a message after specified time
 #include <chrono>
-// header files for project classes and functions
+// Header files for project classes and functions
 #include "BaseRide.h"
 #include "SingleRide.h"
 #include "Functions.h"
@@ -20,7 +20,7 @@ using namespace std;
 int main()
 {
         //========================================================== SETUP PHASE ====================================================================================================
-        // Creating variables of type int , string used to instantiate the objects
+        // Declaring variables of type int , string used to instantiate the objects
         int availableDrivers = 0, seatsAvailable=0;
         string rideType, driverCar, driverName, driverLicensePlate, driverDestination;
         // Used later as while loop argument to check if license plate already exists in the database
@@ -98,7 +98,7 @@ int main()
         
 
 //========================================================== MANAGING PHASE =================================================================================================
-        //strchoices and intchoices are variables created to hold the current user input
+        //strchoices and intchoices are variables Declared to hold the current user input
         //other variables are used for storing user info and checking user info against database
         string strChoices, passengerName, passengerDestination;
         int ridesCount = availableRides[0]->counter , intChoices;

@@ -1,3 +1,8 @@
+/*
+	Developed by Arian Ahmadinejad
+	Drively : Grade 12 Computer Science Project
+	2020-10-17
+*/
 #pragma once
 #include <string>
 #include <ctime>
@@ -22,7 +27,7 @@ struct Cost
 };
 
 // this is the base class used to create the two inherited classes , The three seatsAvailable , passengersIncar and carCapacity are important variables as their used for the logic in different stages of program. None of the functions return anything.
-// 5 of the methods are virtual and have different functionalities based on the object
+// 3 of the methods are virtual and have different functionalities based on the object the rest are methods shared across all classes.
 class BaseRide
 {
 protected:
@@ -38,11 +43,11 @@ public:
 	string rideType , licensePlate , destination;
 	int seatsAvailable = 0 , passengersInCar = 0 , carCapacity = seatsAvailable;
 	static int counter;
-	virtual void reserveSeat(string passengerName);
-	virtual void cancelSeat(string passengerName);
+	void reserveSeat(string passengerName);
+	void cancelSeat(string passengerName);
+	void getCarInfo();
+	void getPassengersList();
 	virtual void calculateCost();
 	virtual void getRideInfo();
 	virtual void getCostInfo();
-	void getCarInfo();
-	void getPassengersList();
 };
